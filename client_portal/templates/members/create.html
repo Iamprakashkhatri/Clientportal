@@ -1,0 +1,10 @@
+<form  method="post" action="{% url 'client_portal:member-create'%}">
+{% csrf_token %}
+{{ form.as_p }}
+<input  type="submit"  value="Submit"  />
+</form>
+{{user.username}}
+
+<!--{% for i in form %}-->
+<!--{{i.user.name}}-->
+<!--{% endfor %}-->

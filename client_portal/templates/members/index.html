@@ -1,0 +1,36 @@
+{%if user.is_authenticated%}
+
+<table border="1">
+<thead>
+<tr>
+<th>username</th>
+<th>email</th>
+<th>address</th>
+<th>Operations</th>
+</tr>
+</thead>
+<tbody>
+{% for i in object_list %}
+<tr>
+<td><a class="button is-info" href="{% url 'memberauth:memlogin' %}">{{i.user.username}}</a></td>
+<td>{{i.user.email}}</td>
+<td>{{i.address}}</td>
+<td>
+<a  href="{{ i.get_absolute_url_detail }}">details</a>
+<a  href="{{ i.get_absolute_url_update }}">edit</a>
+<a  href="{{ i.get_absolute_url_delete }}">delete</a>
+
+</td>
+</tr>
+
+{% endfor %}
+<a class="button is-info" href="{% url 'client_portal:memindex' %}">Create Project members</a>
+</tbody>
+</table>
+
+<p><a class="button is-info" href="{% url 'client_portal:list' %}">Go Back</a></p>
+
+<p><a class="button is-info" href="{% url 'memberauth:login' %}">Comments & reply </a></p>
+
+
+{%endif%}

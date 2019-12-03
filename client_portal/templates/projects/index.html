@@ -1,0 +1,31 @@
+{%if user.is_authenticated%}
+
+<table border="1">
+<thead>
+<tr>
+<th>Project Title</th>
+<th>Type</th>
+<th>Operations</th>
+<!--<th>Description</th>-->
+</tr>
+</thead>
+<tbody>
+{% for i in object_list %}
+<tr>
+<td><a class="button is-info" href="{{i.get_absolute_url_detail}}">{{ i.title }}</a></td>
+<td>{{ i.type}}</td>
+<!--<td>{{ i.description}}</td>-->
+<td>
+<!--<a  href="{{ i.get_absolute_url_detail }}">details</a>-->
+<a  href="{{ i.get_absolute_url_update }}">edit</a>
+<a  href="{{ i.get_absolute_url_delete }}">delete</a>
+
+</td>
+</tr>
+
+{% endfor %}
+<a class="button is-info" href="{% url 'client_portal:index' %}">Create New Project</a>
+</tbody>
+</table>
+
+{%endif%}

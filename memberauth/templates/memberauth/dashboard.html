@@ -1,0 +1,18 @@
+// dashboard.html
+<a href='#'>Logout</a>
+Welcome,
+{{userdetail.username}}
+<br/>
+Asked Comments.
+<br/>
+{% for question in questions %}
+<li>{{question.title}}</li>
+{% endfor %}
+<br/>
+Reply.
+{% for answer in answers %}
+<li>{{answer.reply_text}} by {{answer.user.username}} </li>
+{% endfor %}
+
+<a class="button is-info" href="{% url 'client_portal:memlist' %}">Go Back </a>
+

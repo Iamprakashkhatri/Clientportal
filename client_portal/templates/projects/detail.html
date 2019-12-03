@@ -1,0 +1,42 @@
+{%if user.is_authenticated%}
+
+<table border="1">
+<thead>
+<tr>
+<th>username</th>
+<th>email</th>
+<th>address</th>
+<th>Operations</th>
+</tr>
+</thead>
+<tbody>
+<p>Member list</p>
+{% for i in context1 %}
+<tr>
+<td><a class="button is-info" href="{% url 'memberauth:memlogin' %}">{{i.user.username}}</a></td>
+<td>{{i.user.email}}</td>
+<td>{{i.address}}</td>
+<!--    <td>{{i.members_user.address}}</td>-->
+<td>
+<a  href="{{ i.get_absolute_url_detail }}">details</a>
+<a  href="{{ i.get_absolute_url_update }}">edit</a>
+<a  href="{{ i.get_absolute_url_delete }}">delete</a>
+
+</td>
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+<p><a class="button is-info" href="{% url 'client_portal:list' %}">Go Back</a></p>
+<p><a class="button is-info" href="{% url 'memberauth:login' %}">Comments & reply </a></p>
+
+
+{%endif%}
+
+<h1>Create Member</h1>
+<form  method="post" action="{% url 'client_portal:member-create'%}">
+{% csrf_token %}
+{{ form.as_p }}
+<input  type="submit"  value="Create Member"  />
+</form>
